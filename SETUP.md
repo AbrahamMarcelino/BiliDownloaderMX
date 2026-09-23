@@ -1,23 +1,23 @@
-# BiliDownloader 构建指南
+# Guía de compilación de BiliDownloader
 
-## 1.直接运行py文件
+## 1. Ejecutar directamente los archivos .py
 
-### 准备运行环境
-Python Version >= 3.10
+### Preparar el entorno de ejecución
+Versión de Python >= 3.10
 
-Operating System >= Windows 10
+Sistema operativo >= Windows 10
 
-### 快速安装依赖库
-下载代码
+### Instalación rápida de dependencias
+Descargar el código
 ```shell
 git clone https://gitee.com/majjcom/bili-downloader.git
 ```
-这里建议建立虚拟环境
+Se recomienda crear un entorno virtual
 ```shell
 python3 -m venv ./venv
 
-# 激活虚拟环境，每次使用都需要运行这个
-# 为了方便可以不使用虚拟环境
+# Activar el entorno virtual; hay que ejecutarlo cada vez que se use
+# Por comodidad, puedes no usar un entorno virtual
 ./venv/Scripts/activate
 ```
 
@@ -25,21 +25,21 @@ python3 -m venv ./venv
 pip install -r requirements.txt
 ```
 
-Windows 需要安装额外的库才能运行：
+En Windows es necesario instalar bibliotecas adicionales para poder ejecutarlo:
 
 ```shell
-# 安装Windows依赖
+# Instalar dependencias de Windows
 pip install -r requirements_win.txt
 ```
 
 
 
-### 运行前准备
-下载支持AV1的[ffmpeg](https://majjcom.lanzouo.com/b01xc9emh)可执行文件，并将`ffmpeg.exe`解压至`src`同级目录的`ffmpeg`目录下（此目录可能需要自己创建）
+### Preparativos antes de ejecutar
+Descarga el ejecutable de [ffmpeg](https://majjcom.lanzouo.com/b01xc9emh) con soporte para AV1 y extrae `ffmpeg.exe` en el directorio `ffmpeg`, al mismo nivel que `src` (puede que tengas que crear este directorio tú mismo)
 
-链接密码：5ytb
+Contraseña del enlace: 5ytb
 
-目录结构大概是这样：
+La estructura de directorios queda más o menos así:
 
 ```
 /--src/--main.py
@@ -48,36 +48,36 @@ pip install -r requirements_win.txt
  |-...
 ```
 
-仓库隐藏了服务密钥，可以使用离线模式，修改如下：
+El repositorio oculta la clave del servicio; puedes usar el modo sin conexión con las siguientes modificaciones:
 
-添加`const.py`到`src/Lib/bd_client`下，并添加以下内容：
+Añade `const.py` en `src/Lib/bd_client` con el siguiente contenido:
 ```python
 CONST_KEY=""
 ```
 
-修改`src/update.py`，将`NO_UPDATE`设置为True
+Modifica `src/update.py` y establece `NO_UPDATE` en True
 
 
 
-### 运行
-在主目录下运行以下命令
+### Ejecutar
+Ejecuta los siguientes comandos en el directorio principal
 ```shell
 cd src
 python compile_ui.py
 cd ..
 pythonw src/main.py
 ```
-当然，也可以写 shell 文件来快速启动，这里不再讲解，参照此处的 shell 即可
+Por supuesto, también puedes escribir un script de shell para iniciarlo rápidamente; no se explica aquí, basta con tomar como referencia los comandos anteriores
 
 
 
-## 2. Linux构建独立可执行文件
+## 2. Compilar un ejecutable independiente en Linux
 
-### 构建环境准备
+### Preparar el entorno de compilación
 
-先根据上文准备好基本的运行环境。
+Primero prepara el entorno de ejecución básico según lo descrito arriba.
 
-再安装nuitka构建工具：
+Después instala la herramienta de compilación nuitka:
 
 ```shell
 python -m pip install -U pip
@@ -86,9 +86,9 @@ pip install nuitka
 
 
 
-### 构建
+### Compilar
 
-构建可能需要`patchelf`的包，请自行安装
+Es posible que la compilación requiera el paquete `patchelf`; instálalo por tu cuenta
 
 ```shell
 cd src
@@ -97,4 +97,4 @@ chmod +x ./build_nuitka_linux.sh
 ./build_nuitka_linux.sh
 ```
 
-构建将输出在`dist.nuitka.linux`目录下
+El resultado de la compilación se genera en el directorio `dist.nuitka.linux`

@@ -2,53 +2,62 @@
 
 ![tag](https://img.shields.io/badge/Language-Python3,_C++-orange.svg) ![tag](https://img.shields.io/badge/License-MIT-green.svg)
 
-## 介绍
+> **Nota:** este repositorio es una adaptación al **español latino** del proyecto original [Majjcom/BiliDownloader](https://github.com/Majjcom/BiliDownloader), creado por Majjcom. Todo el crédito del desarrollo corresponde a su autor original; aquí solo se traduce la documentación para que la comunidad hispanohablante pueda usarlo con mayor facilidad.
 
-这是一款开源的 b 站 视频下载器
+## Introducción
 
-## 使用
+Este es un descargador de videos de Bilibili (b站) de código abierto
 
-发行版在Windows中安装即可使用
+## Uso
 
-输入BV号、AV号、MD号或EP号即可获取视频 (MD号是指番剧详情页面链接上的**mdxxxx**)
+En Windows basta con instalar la versión publicada (release) para usarlo
+
+Introduce un número BV, AV, MD o EP para obtener el video (el número MD es el **mdxxxx** que aparece en el enlace de la página de detalles de un anime/serie)
 
 ![](imgs/2026-09-20_17-55-14.png)
 
 ------
 
-你可以在**设置界面**设置<u>下载位置</u>
+Puedes configurar la <u>ubicación de descarga</u> en la **pantalla de configuración**
 
-在部分情况下，你需要在设置界面通过二维码登录b站账号来下载部分会员资源
+En algunos casos, necesitarás iniciar sesión con tu cuenta de Bilibili mediante código QR desde la pantalla de configuración para descargar ciertos contenidos exclusivos para miembros
 
-***本应用不提供会员资源的直接下载。如需下载会员资源，请登录拥有大会员的账号进行下载操作***
-
-------
-
-确认信息后，选择分集，左侧打勾即可下载
+***Esta aplicación no ofrece la descarga directa de contenido exclusivo para miembros. Si deseas descargar dicho contenido, inicia sesión con una cuenta que tenga membresía premium (大会员) y realiza la descarga***
 
 ------
 
-在下一页，选择视频清晰度和视频编码，你也可以在这里临时修改保存路径
+Tras confirmar la información, elige los episodios; marca la casilla de la izquierda para descargarlos
 
 ------
 
-随后点击提交即可开始下载
+En la siguiente página, elige la resolución y el códec de video; aquí también puedes cambiar temporalmente la ruta de guardado
 
 ------
 
-## 注意事项
+Después, haz clic en enviar para iniciar la descarga
 
-目前暂不提供 **杜比音效** 资源的下载
+------
 
-部分视频需要 **大会员** 才能下载完整视频，请在<u>**设置**</u>中登录账号
+## Documentación
 
-部分清晰度需要 **大会员** 才能下载，请在设置中登录
+- [Guía de usuario](doc/guia-de-usuario.md): versiones disponibles, migración de la configuración, uso paso a paso y glosario de la interfaz (traducida de la publicación del autor en el foro 52pojie)
+- [Guía de compilación](SETUP.md)
+- [Plan de migración a bibliotecas actuales](doc/plan-migracion-dependencias.md)
+- [Historial de cambios](CHANGELOG.md)
 
-## 其他
+## Notas
 
-Windows可执行文件通过Nuitka构建
+Por ahora no se ofrece la descarga de contenido con **audio Dolby**
 
-## 演示图片
+Algunos videos requieren **membresía premium (大会员)** para descargarse completos; inicia sesión con tu cuenta en <u>**Configuración**</u>
+
+Algunas resoluciones requieren **membresía premium (大会员)** para descargarse; inicia sesión en la configuración
+
+## Otros
+
+El ejecutable de Windows se compila con Nuitka
+
+## Capturas de pantalla
 
 ![](imgs/2026-09-20_17-58-32.png)
 
@@ -58,6 +67,6 @@ Windows可执行文件通过Nuitka构建
 
 
 
-尾注：感谢[吾爱破解论坛](www.52pojie.cn)
+Nota final: agradecimientos al [foro 吾爱破解 (52pojie)](www.52pojie.cn)
 
 maj001@www.52pojie.cn
