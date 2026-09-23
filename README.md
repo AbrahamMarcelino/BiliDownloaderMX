@@ -42,6 +42,7 @@ Después, haz clic en enviar para iniciar la descarga
 
 - [Guía de usuario](doc/guia-de-usuario.md): versiones disponibles, migración de la configuración, uso paso a paso y glosario de la interfaz (traducida de la publicación del autor en el foro 52pojie)
 - [Guía de compilación](SETUP.md)
+- [Documentación técnica](doc/README.md): arquitectura, API de Bilibili, motor de descargas, configuración y revisión de código
 - [Plan de migración a bibliotecas actuales](doc/plan-migracion-dependencias.md)
 - [Historial de cambios](CHANGELOG.md)
 
