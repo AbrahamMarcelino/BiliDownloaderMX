@@ -9,13 +9,13 @@
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-403": "权限不足",
-        "-404": "无视频",
-        "62002": "稿件不可见"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-403": "Permisos insuficientes",
+        "-404": "No hay video",
+        "62002": "El video no es visible"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {}
     }
@@ -25,16 +25,16 @@
     "method": "GET",
     "verify": false,
     "params": {
-      "aid": "稿件avid num",
-      "bvid": "稿件bvid str"
+      "aid": "avid del video num",
+      "bvid": "bvid del video str"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "视频不存在"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "El video no existe"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {}
     }
@@ -44,22 +44,22 @@
     "method": "GET",
     "verify": true,
     "params": {
-      "avid": "av号 num",
-      "bvid": "bv号 string",
-      "cid": "视频id num",
-      "qn": "清晰度 num",
-      "fnval": "视频获取方式",
+      "avid": "número av num",
+      "bvid": "número bv string",
+      "cid": "id del video num",
+      "qn": "calidad num",
+      "fnval": "Formatos de video solicitados",
       "fnver": 0,
-      "fourk": "有4K=1, 无=0",
-      "cur_language": "AI原声翻译语言"
+      "fourk": "con 4K=1, sin 4K=0",
+      "cur_language": "Idioma de la traducción de voz con IA"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "无视频"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No hay video"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {}
     }
@@ -69,17 +69,17 @@
     "method": "GET",
     "verify": false,
     "params": {
-      "aid": "av号 num (可选)",
-      "bvid": "bv号 str (可选)",
-      "cid": "视频id num"
+      "aid": "número av num (opcional)",
+      "bvid": "número bv str (opcional)",
+      "cid": "id del video num"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "无视频"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No hay video"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {}
     }
@@ -90,22 +90,22 @@
     "verify": true,
     "wbi": true,
     "params": {
-      "avid": "av号 num",
-      "bvid": "bv号 string",
-      "cid": "视频id num",
-      "qn": "清晰度 num",
-      "fnval": "视频获取方式",
+      "avid": "número av num",
+      "bvid": "número bv string",
+      "cid": "id del video num",
+      "qn": "calidad num",
+      "fnval": "Formatos de video solicitados",
       "fnver": 0,
-      "fourk": "有4K=1, 无=0",
-      "cur_language": "AI原声翻译语言"
+      "fourk": "con 4K=1, sin 4K=0",
+      "cur_language": "Idioma de la traducción de voz con IA"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "无视频"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No hay video"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {}
     }

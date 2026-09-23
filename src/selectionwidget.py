@@ -5,16 +5,16 @@ from PySide6 import QtWidgets, QtCore
 from centralcheckbox import CentralCheckBox
 from ui_selectionwidget import Ui_SelectionWidget
 
-SELECTTON_HELP = """输入你要下载的区段：
-区段使用单集数字或 A-B 的格式指定头尾，使用英文逗号(,)分割多个区段。
-如果不输入内容点击设置选集则对全部选项进行反选操作。
+SELECTTON_HELP = """Escribe los episodios que quieres descargar:
+Indica cada tramo con un número de episodio o con el formato A-B (inicio y fin), y separa los tramos con comas (,).
+Si dejas el campo vacío y presionas «Aplicar selección», se invierte la selección actual.
 
-举例：
-假设你要下载第一P和第二P，你可以输入：1-2 或者输入 1, 2
+Ejemplos:
+Para descargar la parte 1 y la parte 2, escribe: 1-2 o bien 1, 2
 
-如果要下载第一P到第五P，但是不要第三P，你可以分成两个区段以规避3：1-2, 4-5
+Para descargar de la parte 1 a la 5 sin la 3, divídelo en dos tramos: 1-2, 4-5
 
-最后，按下设置选集按钮完成设置。"""
+Por último, presiona el botón «Aplicar selección» para confirmar."""
 
 
 class SelectionWidget(QtWidgets.QWidget):
@@ -60,7 +60,7 @@ class SelectionWidget(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def on_help_button_clicked(self):
-        QtWidgets.QMessageBox.information(self, "选集帮助", SELECTTON_HELP)
+        QtWidgets.QMessageBox.information(self, "Ayuda de selección", SELECTTON_HELP)
 
     @QtCore.Slot()
     def on_set_button_clicked(self):
@@ -78,41 +78,41 @@ class SelectionWidget(QtWidgets.QWidget):
         selected = []
         select_max = -1
         if len(selections) == 0:
-            QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+            QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
             return
         for block in selections:
             if '-' in block:
                 rng = block.split('-')
                 if len(rng) != 2:
-                    QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
                     return
                 if not rng[0].isdigit() or not rng[1].isdigit():
-                    QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
                     return
                 if int(rng[0]) < 1:
-                    QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
                     return
                 if int(rng[0]) > int(rng[1]):
-                    QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
                     return
                 if int(rng[1]) > len(self.data["page_data"]):
-                    QtWidgets.QMessageBox.critical(self, "错误", "选集过大")
+                    QtWidgets.QMessageBox.critical(self, "Error", "El número de episodio es mayor que el total")
                     return
                 if int(rng[0]) <= select_max:
-                    QtWidgets.QMessageBox.critical(self, "错误", "顺序错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Los tramos deben ir en orden ascendente y sin repetirse")
                     return
             else:
                 if not block.isdigit():
-                    QtWidgets.QMessageBox.critical(self, "错误", "选集不是数字")
+                    QtWidgets.QMessageBox.critical(self, "Error", "El episodio debe ser un número")
                     return
                 if int(block) < 1:
-                    QtWidgets.QMessageBox.critical(self, "错误", "语法错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Formato incorrecto")
                     return
                 if int(block) > len(self.data["page_data"]):
-                    QtWidgets.QMessageBox.critical(self, "错误", "选集过大")
+                    QtWidgets.QMessageBox.critical(self, "Error", "El número de episodio es mayor que el total")
                     return
                 if int(block) <= select_max:
-                    QtWidgets.QMessageBox.critical(self, "错误", "顺序错误")
+                    QtWidgets.QMessageBox.critical(self, "Error", "Los tramos deben ir en orden ascendente y sin repetirse")
                     return
                 rng = [int(block)] * 2
 

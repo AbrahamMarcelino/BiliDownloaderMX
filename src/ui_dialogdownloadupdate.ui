@@ -32,13 +32,13 @@
    <enum>Qt::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>获取更新</string>
+   <string>Actualización</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>正在获取更新...</string>
+      <string>Descargando la actualización...</string>
      </property>
     </widget>
    </item>

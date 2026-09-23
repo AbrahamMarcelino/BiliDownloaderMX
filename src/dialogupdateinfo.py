@@ -8,5 +8,5 @@ class DialogUpdateInfo(QtWidgets.QDialog):
         super().__init__(parent)
         self.ui = Ui_DialogUpdateInfo()
         self.ui.setupUi(self)
-        self.ui.label_version.setText("发现新版本: {}".format(version))
+        self.ui.label_version.setText("Nueva versión disponible: {}".format(version))
         self.ui.text_info.setMarkdown(info)

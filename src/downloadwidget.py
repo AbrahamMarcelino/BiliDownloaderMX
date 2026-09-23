@@ -104,7 +104,7 @@ class DownloadWidget(QtWidgets.QWidget):
                 task["widget"].set_task_state("queued")
                 self.tasks.append(task)
             else:
-                task["widget"].update_status("重新开始失败：无法删除临时文件")
+                task["widget"].update_status("No se pudo reiniciar: no se pudieron borrar los archivos temporales")
                 task["widget"].set_task_state("failed")
         elif result == RESULT_PAUSED:
             task["widget"].set_task_state("paused")
@@ -157,7 +157,7 @@ class DownloadWidget(QtWidgets.QWidget):
         if task in self.finished:
             self.finished.remove(task)
         if not self._remove_partial_files(task):
-            task["widget"].update_status("重新开始失败：无法删除临时文件")
+            task["widget"].update_status("No se pudo reiniciar: no se pudieron borrar los archivos temporales")
             task["widget"].set_task_state("failed")
             return
         task["widget"].update_progress(0, 0)
@@ -224,7 +224,7 @@ class DownloadWidget(QtWidgets.QWidget):
                     all_removed = False
                     widget = task.get("widget")
                     if widget is not None:
-                        widget.update_status("退出时无法删除部分临时文件")
+                        widget.update_status("Al salir no se pudieron borrar algunos archivos temporales")
             self._temporary_files_cleaned = all_removed
             if not all_removed:
                 self._cleanup_attempts += 1

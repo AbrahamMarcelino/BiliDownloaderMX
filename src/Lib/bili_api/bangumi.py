@@ -25,9 +25,9 @@ def get_bangumi_info(media_id: int):
         query=params
     )
     if get['code'] != 0:
-        raise NetWorkException('番剧信息获取错误:\n{0};\n{1};\n{2}'.format(
+        raise NetWorkException('Error al obtener la información de la serie:\n{0};\n{1};\n{2}'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
     return get['result']
@@ -48,7 +48,7 @@ def get_bangumi_detailed_info(season_id: int = None, ep_id: int = None, media_id
         params.pop('season_id')
         params['ep_id'] = ep_id
     else:
-        raise BiliVideoIdException('你必须提供 season_id 和 ep_id 中的任意一个')
+        raise BiliVideoIdException('Debes indicar season_id o ep_id')
 
     get = utils.network.get_data(
         scheme=url.scheme,
@@ -58,9 +58,9 @@ def get_bangumi_detailed_info(season_id: int = None, ep_id: int = None, media_id
         query=params
     )
     if get['code'] != 0:
-        raise NetWorkException('番剧详细信息获取错误:\n{0};\n{1};\n{2}'.format(
+        raise NetWorkException('Error al obtener los detalles de la serie:\n{0};\n{1};\n{2}'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
     info = get_bangumi_info(get['result']['media_id']) if media_id is None else info
@@ -89,7 +89,7 @@ def get_bangumi_url(
         params.pop("bvid")
         params["avid"] = avid
     else:
-        raise BiliVideoIdException("你必须输入 aid, bvid 中的任意一个")
+        raise BiliVideoIdException("Debes indicar aid o bvid")
     header = {}
     if passport is not None:
         header["Cookie"] = passport.get_cookie()
@@ -103,9 +103,9 @@ def get_bangumi_url(
     )
 
     if get["code"] != 0:
-        raise NetWorkException("获取番剧链接错误:\n{0};\n{1};\n{2};".format(
+        raise NetWorkException("Error al obtener el enlace de la serie:\n{0};\n{1};\n{2};".format(
             get["code"],
-            api["return"]["code"].get(get["code"], "未知错误"),
+            api["return"]["code"].get(get["code"], "Error desconocido"),
             get["message"]
         ))
 
@@ -146,9 +146,9 @@ def get_bangumi_url_v2(
     )
 
     if get["code"] != 0:
-        raise NetWorkException("获取链接错误:\n{0};\n{1};\n{2};".format(
+        raise NetWorkException("Error al obtener el enlace:\n{0};\n{1};\n{2};".format(
             get["code"],
-            api["return"]["code"].get(get["code"], "未知错误"),
+            api["return"]["code"].get(get["code"], "Error desconocido"),
             get["message"]
         ))
 

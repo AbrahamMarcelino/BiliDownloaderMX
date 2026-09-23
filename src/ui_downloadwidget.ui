@@ -55,7 +55,7 @@
    <item>
     <widget class="QPushButton" name="button_clean">
      <property name="text">
-      <string>清空已完成</string>
+      <string>Limpiar completados</string>
      </property>
     </widget>
    </item>

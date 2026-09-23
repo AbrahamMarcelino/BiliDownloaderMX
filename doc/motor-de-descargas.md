@@ -41,7 +41,7 @@ Durante la descarga, la propia tarea guarda:
   - `tasks`: cola pendiente. Las nuevas se insertan al principio y se sacan por el final, así que es FIFO. Las reanudadas o reiniciadas se añaden al final y **pasan delante** de las nuevas.
   - `running_tasks`, `paused_tasks`, `finished`, `all_tasks`.
 - **Planificador:** un `QTimer` de **1 s** arranca una tarea si hay menos activas que `max_thread_count`.
-  - Pese a su nombre en la interfaz (最大下载线程数, «hilos de descarga»), es el número de **descargas simultáneas**, y solo se lee al iniciar la app.
+  - En el original la opción se llama «hilos de descarga» (最大下载线程数), pero es el número de **descargas simultáneas** (así se llama en la interfaz traducida), y solo se lee al iniciar la app.
 - **Duplicados:** no arranca dos tareas con el mismo destino (`path/title/name`) al mismo tiempo.
 - **Limpiar completados:** quita de la lista las tareas terminadas.
 - **Al cerrar la ventana (`shutdown`):**
@@ -129,4 +129,4 @@ Algunas series solo ofrecen MP4. Se admite únicamente si el archivo es **de un 
 
 - Ruta: `<directorio de trabajo>/ffmpeg/ffmpeg.upx.exe` en Windows (comprimido con UPX desde la 1.3.19) o `ffmpeg/ffmpeg` en Linux.
 - En Windows se lanza con `CREATE_NO_WINDOW` para que no aparezca una consola.
-- La salida de ffmpeg se descarta (`os.devnull`). Si falla, solo se muestra «ffmpeg合并失败» (falló la combinación).
+- La salida de ffmpeg se descarta (`os.devnull`). Si falla, solo se muestra «Falló la combinación con ffmpeg».

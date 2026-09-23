@@ -75,7 +75,7 @@ class LoginDataThread(QtCore.QThread):
         img_buff.seek(0)
         img = QtGui.QImage.fromData(img_buff.read())
         self.update_qrcode.emit(img)
-        self.update_status.emit("请扫描二维码登录")
+        self.update_status.emit("Escanea el código QR para iniciar sesión")
         login_status = False
         err_msg = ""
         headers = None
@@ -87,21 +87,21 @@ class LoginDataThread(QtCore.QThread):
                         break
                     if "code" in status:
                         if status["code"] != 0:
-                            err_msg = "请求错误: " + status["message"]
+                            err_msg = "Error en la solicitud: " + status["message"]
                             break
                     if str(status["data"]["code"]) == "0":
-                        self.update_status.emit("登录成功")
+                        self.update_status.emit("Sesión iniciada")
                         headers = getter.get_headers()
                         login_status = True
                     elif str(status["data"]["code"]) == "86101":
-                        self.update_status.emit("请扫描二维码登录bilibili")
+                        self.update_status.emit("Escanea el código QR con la app de Bilibili")
                     elif str(status["data"]["code"]) == "86090":
-                        self.update_status.emit("扫描成功，请确认")
+                        self.update_status.emit("Código escaneado; confirma en tu teléfono")
                     elif str(status["data"]["code"]) == "86038":
-                        err_msg = "二维码失效"
+                        err_msg = "El código QR caducó"
                         break
                     else:
-                        err_msg = "二维码登录错误"
+                        err_msg = "Error al iniciar sesión con el código QR"
                         break
                     time.sleep(1.2)
             if self.parent().dialog_end:

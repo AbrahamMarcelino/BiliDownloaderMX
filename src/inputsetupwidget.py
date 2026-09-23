@@ -60,16 +60,16 @@ class InputSetupWidget(QWidget):
         final = ""
         if matched == "AV":
             final = matchFomat.getAvid(format_string)
-            self.ui.label_hint.setText(f"匹配到的AV号: {final}")
+            self.ui.label_hint.setText(f"Número AV detectado: {final}")
         elif matched == "BV":
             final = matchFomat.getBvid(format_string)
-            self.ui.label_hint.setText(f"匹配到的BV号: {final}")
+            self.ui.label_hint.setText(f"Número BV detectado: {final}")
         elif matched == "EP":
             final = matchFomat.getEpid(format_string)
-            self.ui.label_hint.setText(f"匹配到的EP号: {final}")
+            self.ui.label_hint.setText(f"Número EP detectado: {final}")
         elif matched == "MD":
             final = matchFomat.getMdid(format_string)
-            self.ui.label_hint.setText(f"匹配到的MD号: {final}")
+            self.ui.label_hint.setText(f"Número MD detectado: {final}")
         self.matched = matched
         self.content = final
         self.ui.button_next.setEnabled(True)

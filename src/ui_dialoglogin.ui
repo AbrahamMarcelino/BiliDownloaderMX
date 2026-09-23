@@ -29,7 +29,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>二维码登录</string>
+   <string>Iniciar sesión con código QR</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -53,7 +53,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>正在准备二维码</string>
+      <string>Preparando el código QR</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

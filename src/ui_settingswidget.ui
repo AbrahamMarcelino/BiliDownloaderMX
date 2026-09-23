@@ -70,7 +70,7 @@
          <item row="20" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
-            <string>注意</string>
+            <string>Atención</string>
            </property>
           </widget>
          </item>
@@ -87,14 +87,14 @@
          <item row="15" column="0">
           <widget class="QLabel" name="label_18">
            <property name="text">
-            <string>退出登录</string>
+            <string>Cerrar sesión</string>
            </property>
           </widget>
          </item>
          <item row="12" column="0">
           <widget class="QLabel" name="label_14">
            <property name="text">
-            <string>仅下载音频</string>
+            <string>Descargar solo audio</string>
            </property>
           </widget>
          </item>
@@ -115,21 +115,21 @@
          <item row="18" column="2">
           <widget class="QPushButton" name="button_config_dir">
            <property name="text">
-            <string>打开</string>
+            <string>Abrir</string>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
           <widget class="QPushButton" name="button_login">
            <property name="text">
-            <string>登录</string>
+            <string>Iniciar sesión</string>
            </property>
           </widget>
          </item>
          <item row="11" column="2">
           <widget class="QLabel" name="label_16">
            <property name="text">
-            <string>重启生效</string>
+            <string>Requiere reiniciar</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -139,7 +139,7 @@
          <item row="18" column="0">
           <widget class="QLabel" name="label_17">
            <property name="text">
-            <string>打开配置文件目录</string>
+            <string>Abrir carpeta de configuración</string>
            </property>
           </widget>
          </item>
@@ -153,17 +153,17 @@
          <item row="7" column="0">
           <widget class="QLabel" name="label_9">
            <property name="toolTip">
-            <string>打开后可以获取8K、HDR的视频内容</string>
+            <string>Permite descargar videos en 8K y HDR</string>
            </property>
            <property name="text">
-            <string>启用超高分辨率下载</string>
+            <string>Activar resolución ultra alta</string>
            </property>
           </widget>
          </item>
          <item row="13" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>下载弹幕</string>
+            <string>Descargar danmaku (comentarios)</string>
            </property>
           </widget>
          </item>
@@ -180,7 +180,7 @@
          <item row="20" column="1">
           <widget class="SpecialColoredLabel" name="label_13">
            <property name="text">
-            <string>离开设置界面以保存设置</string>
+            <string>Sal de esta pestaña para guardar los cambios</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -190,7 +190,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_6">
            <property name="text">
-            <string>默认优选编码</string>
+            <string>Códec preferido</string>
            </property>
           </widget>
          </item>
@@ -207,21 +207,21 @@
          <item row="6" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>保留下载的音频文件</string>
+            <string>Conservar el audio descargado</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_7">
            <property name="text">
-            <string>最大下载线程数</string>
+            <string>Descargas simultáneas</string>
            </property>
           </widget>
          </item>
          <item row="11" column="0">
           <widget class="QLabel" name="label_15">
            <property name="text">
-            <string>启用高DPI适配</string>
+            <string>Adaptar a pantallas de alta densidad (DPI)</string>
            </property>
           </widget>
          </item>
@@ -235,7 +235,7 @@
          <item row="10" column="2">
           <widget class="QLabel" name="label_22">
            <property name="text">
-            <string>重启生效</string>
+            <string>Requiere reiniciar</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -245,20 +245,20 @@
          <item row="0" column="2">
           <widget class="QPushButton" name="button_path">
            <property name="text">
-            <string>设置路径</string>
+            <string>Elegir carpeta</string>
            </property>
           </widget>
          </item>
          <item row="8" column="2">
           <widget class="QLabel" name="label_20">
            <property name="toolTip">
-            <string>启用此选项可能存在隐患，可能导致程序崩溃或者造成其他更严重的影响。</string>
+            <string>Activar esta opción puede causar problemas: el programa podría cerrarse inesperadamente o fallar de otras formas.</string>
            </property>
            <property name="toolTipDuration">
             <number>0</number>
            </property>
            <property name="text">
-            <string>不建议＊</string>
+            <string>No recomendado *</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -268,14 +268,14 @@
          <item row="15" column="2">
           <widget class="QPushButton" name="button_logout">
            <property name="text">
-            <string>退出</string>
+            <string>Cerrar</string>
            </property>
           </widget>
          </item>
          <item row="10" column="0">
           <widget class="QLabel" name="label_21">
            <property name="text">
-            <string>自动读取剪贴板</string>
+            <string>Leer el portapapeles automáticamente</string>
            </property>
           </widget>
          </item>
@@ -296,14 +296,14 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>登录B站</string>
+            <string>Sesión de Bilibili</string>
            </property>
           </widget>
          </item>
          <item row="4" column="2">
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>重启生效</string>
+            <string>Requiere reiniciar</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -313,10 +313,10 @@
          <item row="8" column="0">
           <widget class="QLabel" name="label_19">
            <property name="toolTip">
-            <string>启用此选项可能存在隐患，可能导致程序崩溃或者造成其他更严重的影响。</string>
+            <string>Activar esta opción puede causar problemas: el programa podría cerrarse inesperadamente o fallar de otras formas.</string>
            </property>
            <property name="text">
-            <string>解除文件名长度限制</string>
+            <string>Quitar el límite de longitud del nombre</string>
            </property>
           </widget>
          </item>
@@ -330,7 +330,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>设置UI风格</string>
+            <string>Estilo de la interfaz</string>
            </property>
           </widget>
          </item>
@@ -364,7 +364,7 @@
          <item row="16" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>重置设置</string>
+            <string>Restablecer configuración</string>
            </property>
           </widget>
          </item>
@@ -398,14 +398,14 @@
          <item row="9" column="0">
           <widget class="QLabel" name="label_23">
            <property name="text">
-            <string>启用杜比音频解析</string>
+            <string>Obtener audio Dolby</string>
            </property>
           </widget>
          </item>
          <item row="2" column="2">
           <widget class="QLabel" name="label_8">
            <property name="text">
-            <string>重启生效</string>
+            <string>Requiere reiniciar</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -415,7 +415,7 @@
          <item row="8" column="1">
           <widget class="QCheckBox" name="check_close_text_len_limit">
            <property name="toolTip">
-            <string>启用此选项可能存在隐患，可能导致程序崩溃或者造成其他更严重的影响。</string>
+            <string>Activar esta opción puede causar problemas: el programa podría cerrarse inesperadamente o fallar de otras formas.</string>
            </property>
            <property name="text">
             <string/>
@@ -432,14 +432,14 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>默认保存位置</string>
+            <string>Carpeta de descargas</string>
            </property>
           </widget>
          </item>
          <item row="16" column="2">
           <widget class="QPushButton" name="button_reset">
            <property name="text">
-            <string>重置</string>
+            <string>Restablecer</string>
            </property>
           </widget>
          </item>
@@ -453,14 +453,14 @@
          <item row="17" column="0">
           <widget class="QLabel" name="label_24">
            <property name="text">
-            <string>打开下载目录</string>
+            <string>Abrir carpeta de descargas</string>
            </property>
           </widget>
          </item>
          <item row="17" column="2">
           <widget class="QPushButton" name="button_open_download_dir">
            <property name="text">
-            <string>打开</string>
+            <string>Abrir</string>
            </property>
           </widget>
          </item>

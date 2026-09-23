@@ -17,7 +17,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>BiliDownloader - 新版本</string>
+   <string>BiliDownloader - Nueva versión</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">

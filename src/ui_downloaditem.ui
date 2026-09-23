@@ -82,7 +82,7 @@
        <item>
         <widget class="QLabel" name="label_status">
          <property name="text">
-          <string>等待下载</string>
+          <string>En espera</string>
          </property>
         </widget>
        </item>
@@ -132,7 +132,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>暂停/继续</string>
+          <string>Pausar/Reanudar</string>
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
@@ -152,7 +152,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>重试</string>
+          <string>Reintentar</string>
          </property>
          <property name="text">
           <string>...</string>
@@ -172,7 +172,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>打开所在目录</string>
+          <string>Abrir carpeta</string>
          </property>
          <property name="text">
           <string>...</string>

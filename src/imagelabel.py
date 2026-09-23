@@ -12,7 +12,7 @@ class ImageLabel(QtWidgets.QLabel):
         self.setScaledContents(True)
         self.setMouseTracking(True)
         self.menu = QtWidgets.QMenu(self)
-        action = QtGui.QAction(text="保存封面", parent=self)
+        action = QtGui.QAction(text="Guardar portada", parent=self)
         self.menu.addAction(action)
         action.triggered.connect(self.on_action_save_clicked)
 

@@ -22,7 +22,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        tab_names = ["输入", "下载", "设置", "关于"]
+        tab_names = ["Entrada", "Descargas", "Configuración", "Acerca de"]
         for i in range(len(tab_names)):
             self.ui.tabWidget.setTabText(i, tab_names[i])
 
@@ -84,13 +84,13 @@ class MainWindow(QtWidgets.QMainWindow):
         if not res:
             QtWidgets.QMessageBox.information(
                 self,
-                "提醒",
-                "您的登录信息已失效，请及时重新登录\n视频下载可能会出现问题"
+                "Aviso",
+                "Tu sesión caducó; vuelve a iniciar sesión.\nLa descarga de videos podría fallar."
             )
 
     @QtCore.Slot(str)
     def download_err(self, msg: str):
-        QtWidgets.QMessageBox.critical(self, "错误", "获取更新失败\n" + msg)
+        QtWidgets.QMessageBox.critical(self, "Error", "No se pudo obtener la actualización\n" + msg)
 
     @QtCore.Slot()
     def download_finished(self):

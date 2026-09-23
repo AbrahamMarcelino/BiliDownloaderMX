@@ -30,28 +30,28 @@ class DownloadItem(QtWidgets.QWidget):
         self.ui.button_pause.setIcon(
             QtGui.QIcon(":/res/download-item/{}".format(icon_name))
         )
-        self.ui.button_pause.setToolTip("继续" if paused else "暂停")
+        self.ui.button_pause.setToolTip("Reanudar" if paused else "Pausar")
 
     def set_task_state(self, state):
         self.info["state"] = state
         self._set_pause_icon(state == "paused")
 
         if state == "queued":
-            self.ui.label_status.setText("等待下载")
+            self.ui.label_status.setText("En espera")
             self.ui.button_pause.setEnabled(True)
             self.ui.button_restart.setEnabled(False)
         elif state == "running":
             self.ui.button_pause.setEnabled(True)
         elif state == "pausing":
-            self.ui.label_status.setText("正在暂停")
+            self.ui.label_status.setText("Pausando")
             self.ui.button_pause.setEnabled(False)
             self.ui.button_restart.setEnabled(False)
         elif state == "paused":
-            self.ui.label_status.setText("已暂停")
+            self.ui.label_status.setText("En pausa")
             self.ui.button_pause.setEnabled(True)
             self.ui.button_restart.setEnabled(True)
         elif state == "restarting":
-            self.ui.label_status.setText("正在重新开始")
+            self.ui.label_status.setText("Reiniciando")
             self.ui.button_pause.setEnabled(False)
             self.ui.button_restart.setEnabled(False)
         elif state == "completed":

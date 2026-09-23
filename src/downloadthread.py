@@ -132,7 +132,7 @@ class DownloadTask(QtCore.QThread):
         if error.refresh_immediately or try_times + 1 >= max_attempts:
             raise error
         self.update_status.emit(
-            "{}失败，即将重试，次数{}".format(description, try_times + 1)
+            "Error al {}; reintentando (intento {})".format(description, try_times + 1)
         )
         self._retry_delay()
 
@@ -153,7 +153,7 @@ class DownloadTask(QtCore.QThread):
     def _http_source_error(error):
         immediate = error.code in (401, 403, 404, 410, 416)
         return MediaSourceUnavailable(
-            "下载链接返回状态码 {}".format(error.code), immediate
+            "El enlace de descarga devolvió el código {}".format(error.code), immediate
         )
 
     def _emit_progress(self, force=False):
@@ -234,7 +234,7 @@ class DownloadTask(QtCore.QThread):
         for try_times in range(3):
             try:
                 self._check_control()
-                self.update_status.emit("正在获取{}流信息".format(description))
+                self.update_status.emit("Obteniendo información del flujo de {}".format(description))
                 headers = dict(_DEFAULT_HEADERS)
                 headers["Range"] = "bytes=0-0"
                 req = Request(url=url, method="GET", headers=headers)
@@ -245,14 +245,14 @@ class DownloadTask(QtCore.QThread):
                     if status == 206:
                         if content_range is None or content_range[2] is None:
                             raise MediaSourceUnavailable(
-                                "服务器返回了无效的文件范围", True
+                                "El servidor devolvió un rango de archivo no válido", True
                             )
                         expected_size = content_range[2]
                     else:
                         content_length = resp.headers.get("Content-Length")
                         if status != 200 or content_length is None:
                             raise MediaSourceUnavailable(
-                                "服务器未返回文件大小", True
+                                "El servidor no indicó el tamaño del archivo", True
                             )
                         expected_size = int(content_length)
             except (DownloadPaused, DownloadCancelled):
@@ -263,12 +263,12 @@ class DownloadTask(QtCore.QThread):
                 finally:
                     error.close()
                 self._retry_media_source(
-                    source_error, "获取{}流信息".format(description), try_times
+                    source_error, "obtener la información del flujo de {}".format(description), try_times
                 )
                 continue
             except MediaSourceUnavailable as error:
                 self._retry_media_source(
-                    error, "获取{}流信息".format(description), try_times
+                    error, "obtener la información del flujo de {}".format(description), try_times
                 )
                 continue
             except Exception as error:
@@ -276,7 +276,7 @@ class DownloadTask(QtCore.QThread):
                     raise
                 self._retry_media_source(
                     MediaSourceUnavailable(str(error)),
-                    "获取{}流信息".format(description),
+                    "obtener la información del flujo de {}".format(description),
                     try_times,
                 )
                 continue
@@ -285,7 +285,7 @@ class DownloadTask(QtCore.QThread):
                 stream_kind, url, path, expected_size, validator
             )
             return expected_size
-        raise MediaSourceUnavailable("获取{}流信息失败".format(description))
+        raise MediaSourceUnavailable("No se pudo obtener la información del flujo de {}".format(description))
 
     def _download_stream(self, url, path, stream_kind, expected_size, description):
         if os.path.exists(path) and os.path.getsize(path) > expected_size:
@@ -311,7 +311,7 @@ class DownloadTask(QtCore.QThread):
                     if validator is not None:
                         headers["If-Range"] = validator["value"]
                 req = Request(url=url, method="GET", headers=headers)
-                self.update_status.emit("正在下载{}".format(description))
+                self.update_status.emit("Descargando {}".format(description))
 
                 try:
                     response = urlopen(req, timeout=_NETWORK_TIMEOUT)
@@ -333,14 +333,14 @@ class DownloadTask(QtCore.QThread):
                         content_range = self._content_range(resp)
                         if content_range is None or content_range[0] != offset:
                             raise MediaSourceUnavailable(
-                                "服务器返回了无效的续传范围", True
+                                "El servidor devolvió un rango de reanudación no válido", True
                             )
                         if (
                                 content_range[2] is not None
                                 and content_range[2] != expected_size
                         ):
                             raise MediaSourceUnavailable(
-                                "续传文件大小发生变化", True
+                                "El tamaño del archivo cambió al reanudar", True
                             )
                         expected_validator = self.task["streamStates"][
                             stream_kind
@@ -367,7 +367,7 @@ class DownloadTask(QtCore.QThread):
                         mode = "wb"
                     elif status not in (200, 206):
                         raise MediaSourceUnavailable(
-                            "下载请求返回状态码 {}".format(status),
+                            "La solicitud de descarga devolvió el código {}".format(status),
                             status in (401, 403, 404, 410, 416),
                         )
 
@@ -391,7 +391,7 @@ class DownloadTask(QtCore.QThread):
                 self._set_stream_progress(stream_kind, actual_size)
                 if actual_size != expected_size:
                     raise MediaSourceUnavailable(
-                        "{}流大小不完整：{} / {}".format(
+                        "Flujo de {} incompleto: {} / {}".format(
                             description, actual_size, expected_size
                         )
                     )
@@ -407,9 +407,9 @@ class DownloadTask(QtCore.QThread):
                 self._set_stream_progress(stream_kind, 0)
             except MediaSourceUnavailable as error:
                 self._retry_media_source(
-                    error, "下载{}".format(description), try_times
+                    error, "descargar el {}".format(description), try_times
                 )
-        raise MediaSourceUnavailable("下载{}失败".format(description))
+        raise MediaSourceUnavailable("No se pudo descargar el {}".format(description))
 
     def download_dash(self, get_url: dict, root_dir: QtCore.QDir):
         video_urls: list = get_url["dash"]["video"]
@@ -455,7 +455,7 @@ class DownloadTask(QtCore.QThread):
         if audio_url is None:
             self._discard_stream_state("audio")
             if self.task["onlyAudio"]:
-                raise RuntimeError("当前视频没有可下载的音频流")
+                raise RuntimeError("Este video no tiene una pista de audio descargable")
 
         video_temp_file_name = "{}_temp.mp4".format(self.task["tempName"])
         video_temp_file_path = root_dir.absoluteFilePath(video_temp_file_name)
@@ -468,12 +468,12 @@ class DownloadTask(QtCore.QThread):
         video_size = 0
         if not self.task["onlyAudio"]:
             video_size = self._probe_stream_size(
-                video_url, "视频", "video", video_temp_file_path
+                video_url, "video", "video", video_temp_file_path
             )
         audio_size = 0
         if audio_url is not None:
             audio_size = self._probe_stream_size(
-                audio_url, "音频", "audio", audio_temp_file_path
+                audio_url, "audio", "audio", audio_temp_file_path
             )
 
         self.total_size = video_size + audio_size
@@ -484,14 +484,14 @@ class DownloadTask(QtCore.QThread):
 
         if not self.task["onlyAudio"]:
             self._download_stream(
-                video_url, video_temp_file_path, "video", video_size, "视频"
+                video_url, video_temp_file_path, "video", video_size, "video"
             )
 
         self._check_control()
 
         if audio_url is not None:
             self._download_stream(
-                audio_url, audio_temp_file_path, "audio", audio_size, "音频"
+                audio_url, audio_temp_file_path, "audio", audio_size, "audio"
             )
 
         self._check_control()
@@ -504,7 +504,7 @@ class DownloadTask(QtCore.QThread):
                 root_dir, video_temp_file_path, audio_temp_file_path
             )
 
-        self.update_status.emit("正在清理")
+        self.update_status.emit("Limpiando archivos temporales")
         if audio_url is None and not self.task["onlyAudio"]:
             self._replace_file(
                 root_dir, video_temp_file_name, "{}.mp4".format(self.task["name"])
@@ -513,7 +513,7 @@ class DownloadTask(QtCore.QThread):
             if root_dir.exists(video_temp_file_name) and not root_dir.remove(
                     video_temp_file_name
             ):
-                raise RuntimeError("无法清理视频临时文件")
+                raise RuntimeError("No se pudo borrar el archivo temporal de video")
 
         if audio_url is not None:
             if self.task["reserveAudio"] or self.task["onlyAudio"]:
@@ -525,7 +525,7 @@ class DownloadTask(QtCore.QThread):
             elif root_dir.exists(audio_temp_file_name) and not root_dir.remove(
                     audio_temp_file_name
             ):
-                raise RuntimeError("无法清理音频临时文件")
+                raise RuntimeError("No se pudo borrar el archivo temporal de audio")
 
     @staticmethod
     def _replace_file(root_dir, source_name, target_name):
@@ -535,16 +535,16 @@ class DownloadTask(QtCore.QThread):
                 root_dir.absoluteFilePath(target_name),
             )
         except OSError:
-            raise RuntimeError("无法保存文件 {}".format(target_name))
+            raise RuntimeError("No se pudo guardar el archivo {}".format(target_name))
 
     def dash_ffmpeg_merge_video(
             self, root_dir: QtCore.QDir, video_temp_file_path, audio_temp_file_path
     ):
-        self.update_status.emit("正在使用ffmpeg合并")
+        self.update_status.emit("Combinando audio y video con ffmpeg")
         out_name = "{}.mp4".format(self.task["name"])
         merge_name = "{}_merge.mp4".format(self.task["tempName"])
         if root_dir.exists(merge_name) and not root_dir.remove(merge_name):
-            raise RuntimeError("无法清理合并临时文件")
+            raise RuntimeError("No se pudo borrar el archivo temporal de combinación")
         ffmpeg_path = QtCore.QDir("ffmpeg").absoluteFilePath(
             "ffmpeg" + ("" if sys.platform == "linux" else ".upx.exe")
         )
@@ -576,7 +576,7 @@ class DownloadTask(QtCore.QThread):
                     self._process = None
         self._check_control()
         if result != 0:
-            raise RuntimeError("ffmpeg合并失败")
+            raise RuntimeError("Falló la combinación con ffmpeg")
         self._replace_file(root_dir, merge_name, out_name)
 
     def download_mp4(self, get_url: dict, root_dir: QtCore.QDir):
@@ -591,16 +591,16 @@ class DownloadTask(QtCore.QThread):
         qid_match = [item for item in video_urls if item["quality"] == quality]
         durls = qid_match[0]["durl"]
         if len(durls) != 1:
-            raise RuntimeError("暂不支持多分段MP4下载")
+            raise RuntimeError("Aún no se admite descargar MP4 de varios segmentos")
         if self.task["onlyAudio"]:
-            raise RuntimeError("MP4格式暂不支持仅下载音频")
+            raise RuntimeError("El formato MP4 aún no permite descargar solo el audio")
         self._discard_stream_state("audio")
         video_url = durls[0]["url"]
 
         video_temp_file_name = "{}_temp.mp4".format(self.task["tempName"])
         video_temp_file_path = root_dir.absoluteFilePath(video_temp_file_name)
         video_size = self._probe_stream_size(
-            video_url, "视频", "video", video_temp_file_path
+            video_url, "video", "video", video_temp_file_path
         )
         self.total_size = video_size
         self.video_finished_size = 0
@@ -609,7 +609,7 @@ class DownloadTask(QtCore.QThread):
         self.pause_available.emit(True)
 
         self._download_stream(
-            video_url, video_temp_file_path, "video", video_size, "视频"
+            video_url, video_temp_file_path, "video", video_size, "video"
         )
         self._check_control()
         self._protect_remaining_stages()
@@ -622,13 +622,13 @@ class DownloadTask(QtCore.QThread):
         danmaku_file_name = "{}.ass".format(self.task["name"])
         danmaku_temp_file_name = "{}_temp.ass".format(self.task["tempName"])
         try:
-            self.update_status.emit("正在下载弹幕")
+            self.update_status.emit("Descargando danmaku")
             download_danmaku(
                 root_dir.absoluteFilePath(danmaku_temp_file_name), self.task["cid"]
             )
             self._replace_file(root_dir, danmaku_temp_file_name, danmaku_file_name)
         except Exception:
-            self.update_status.emit("弹幕下载失败，已跳过")
+            self.update_status.emit("No se pudo descargar el danmaku; se omitió")
             if root_dir.exists(danmaku_temp_file_name):
                 root_dir.remove(danmaku_temp_file_name)
             time.sleep(1)
@@ -638,7 +638,7 @@ class DownloadTask(QtCore.QThread):
         while try_times < 3:
             try:
                 self._check_control()
-                self.update_status.emit("正在获取链接")
+                self.update_status.emit("Obteniendo enlaces")
                 if self.task["type"] == "video":
                     kwargs = {"cid": self.task["cid"], "fnval": self.task["fnval"],
                               "cur_language": self.task["aiLanguage"], "passport": passport,
@@ -653,14 +653,14 @@ class DownloadTask(QtCore.QThread):
             except Exception:
                 try_times += 1
                 self.update_status.emit(
-                    "获取链接失败，即将重试，次数{}".format(try_times)
+                    "No se pudieron obtener los enlaces; reintentando (intento {})".format(try_times)
                 )
                 if try_times >= 3 and self.task["type"] == "video":
-                    self.update_status.emit("失败次数过多，尝试更换获取链接方式")
+                    self.update_status.emit("Demasiados fallos; probando otro método para obtener los enlaces")
                     self.task["type"] = "bangumi"
                     try_times = 0
                 self._retry_delay()
-        raise RuntimeError("获取下载链接失败")
+        raise RuntimeError("No se pudieron obtener los enlaces de descarga")
 
     def _resolve_media(self, passport, use_cache=True):
         cached_media = self.task.get("resolvedMedia") if use_cache else None
@@ -683,17 +683,17 @@ class DownloadTask(QtCore.QThread):
         elif get_url["type"] == "MP4":
             self.download_mp4(get_url, root_dir)
         else:
-            raise RuntimeError("不支持的下载格式")
+            raise RuntimeError("Formato de descarga no compatible")
 
     def _run_download(self):
-        self.update_status.emit("开始下载")
+        self.update_status.emit("Iniciando descarga")
         self.pause_available.emit(True)
 
         root_dir = QtCore.QDir(self.task["path"])
         if not root_dir.exists(self.task["title"]):
             root_dir.mkdir(self.task["title"])
         if not root_dir.cd(self.task["title"]):
-            raise RuntimeError("无法进入下载目录")
+            raise RuntimeError("No se pudo acceder a la carpeta de descarga")
 
         passportRaw = configUtils.getUserData(configUtils.Configs.PASSPORT)
         passport = None
@@ -719,9 +719,9 @@ class DownloadTask(QtCore.QThread):
                 raise
             self._media_refresh_attempted = True
             if used_cache:
-                self.update_status.emit("原链接失效，正在刷新")
+                self.update_status.emit("El enlace anterior caducó; actualizando")
             else:
-                self.update_status.emit("链接不可用，正在刷新")
+                self.update_status.emit("Enlace no disponible; actualizando")
             self.task.pop("resolvedMedia", None)
             self._using_cached_media = False
             self._check_control()
@@ -740,15 +740,15 @@ class DownloadTask(QtCore.QThread):
             self._run_download()
         except DownloadPaused:
             self.result = RESULT_PAUSED
-            self.update_status.emit("已暂停")
+            self.update_status.emit("En pausa")
         except DownloadCancelled:
             self.result = RESULT_CANCELLED
         except Exception as error:
             self.result = RESULT_FAILED
-            self.update_status.emit("下载失败：{}".format(error))
+            self.update_status.emit("Error en la descarga: {}".format(error))
         else:
             self.result = RESULT_COMPLETED
-            self.update_status.emit("下载完成")
+            self.update_status.emit("Descarga completada")
             self.update_finished.emit()
         finally:
             self.pause_available.emit(False)

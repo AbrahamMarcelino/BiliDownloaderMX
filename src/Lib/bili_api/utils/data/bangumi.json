@@ -4,15 +4,15 @@
     "method": "GET",
     "verify": true,
     "params": {
-      "media_id": "剧集mdid(md) num"
+      "media_id": "mdid de la serie (md) num"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "不存在"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No existe"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "result": {}
     }
   },
@@ -21,15 +21,15 @@
     "method": "GET",
     "verify": false,
     "params": {
-      "season_id": "番剧ssid num",
-      "ep_id": "剧集epid num"
+      "season_id": "ssid de la serie num",
+      "ep_id": "epid del episodio num"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-404": "错误"
+        "0": "Éxito",
+        "-404": "Error"
       },
-      "message": "返回信息",
+      "message": "Información devuelta",
       "ttl": 1,
       "result": {}
     }
@@ -49,11 +49,11 @@
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "无视频"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No hay video"
       },
-      "message": "请求信息 str",
+      "message": "Información de la solicitud str",
       "result": "obj"
     }
   },
@@ -63,7 +63,7 @@
     "data_type": "application/json",
     "verify": true,
     "params": {
-      "csrf": "CSRF验证数据 (bili_jct)"
+      "csrf": "Dato de verificación CSRF (bili_jct)"
     },
     "body": {
       "exp_info": {
@@ -71,7 +71,7 @@
       },
       "player_param": {
         "drm_tech_type": 2,
-        "fnval": "视频获取方式",
+        "fnval": "Formatos de video solicitados",
         "fnver": 0
       },
       "scene": "normal",
@@ -87,12 +87,12 @@
     },
     "return": {
       "code": {
-        "0": "成功",
-        "-400": "请求错误",
-        "-404": "无视频"
+        "0": "Éxito",
+        "-400": "Solicitud incorrecta",
+        "-404": "No hay video"
       },
-      "message": "请求信息 str",
-      "ttl": "未知",
+      "message": "Información de la solicitud str",
+      "ttl": "Desconocido",
       "data": "obj"
     }
   }

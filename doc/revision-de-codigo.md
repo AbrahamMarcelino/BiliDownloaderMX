@@ -20,7 +20,7 @@ Los problemas de compatibilidad con Linux y macOS ya están detallados en la [fa
 | 5 | Baja | `src/dialoglogin.py:46-55` | `load_finished` borra `self.load_thread` y llama a `close()`. Si eso emite `finished`, `dialog_finished` accede a `self.load_thread`, que ya no existe → `AttributeError` en la consola | Probable |
 | 6 | Baja | `src/utils/configUtils.py:74` | `UserDataHelper.get()` usa `self.raw["key"]` (texto literal) en lugar de `self.raw[key]`: pedir `version` o `isnew` lanza `KeyError`. Hoy nadie lo llama así | Confirmado |
 | 7 | Baja | `src/utils/configUtils.py:57`, `:113` | Borrar una clave que no existe (`set(clave, None)`) lanza `KeyError` (`pop` sin valor por defecto). Además, con `autosave=True` el borrado no se guarda | Confirmado |
-| 8 | Baja | `src/Lib/bili_api/bangumi.py:108`, `:151` | Busca el mensaje de error con la clave numérica (`get["code"]`), pero en el JSON las claves son texto: siempre muestra «未知错误» (error desconocido) | Confirmado |
+| 8 | Baja | `src/Lib/bili_api/bangumi.py:108`, `:151` | Busca el mensaje de error con la clave numérica (`get["code"]`), pero en el JSON las claves son texto: siempre muestra «Error desconocido» | Confirmado |
 | 9 | Baja | `src/Lib/bili_api/utils/wbisign.py:61-72` | Las claves WBI se guardan para siempre en una variable global. Bilibili las rota; si la app queda abierta mucho tiempo, las firmas pueden empezar a fallar hasta reiniciar | Probable |
 | 10 | Baja | `src/Lib/bd_client/rconn_client/rconn.py:44-46` | `recv(4)` y `recv(json_len)` no se repiten en bucle; con una respuesta fragmentada el JSON llega incompleto. Solo afecta al actualizador (desactivado) | Confirmado |
 | 11 | Baja | `src/Lib/bili_api/utils/loadImage.py:8-17` | Descarga portadas sin *timeout* (puede colgar el hilo), ignora la parte `?query` de la URL y no cierra la conexión | Confirmado |
@@ -33,7 +33,7 @@ Los problemas de compatibilidad con Linux y macOS ya están detallados en la [fa
 
 | Ubicación | Observación |
 |---|---|
-| `src/downloadwidget.py:207-209` | «最大下载线程数» (hilos de descarga) es en realidad el número de **descargas simultáneas**, y solo se lee al iniciar la app |
+| `src/downloadwidget.py:207-209` | La opción que en el original se llama «最大下载线程数» (hilos de descarga) es en realidad el número de **descargas simultáneas** (en la interfaz traducida ya se llama así), y solo se lee al iniciar la app |
 | `src/downloadwidget.py:392-414` | Al cerrar la app se borran los temporales de **todas** las tareas: las descargas en pausa no sobreviven a un reinicio |
 | `src/downloadthread.py:563-564` | La salida de ffmpeg se descarta; si la combinación falla, no hay forma de saber por qué |
 | `src/configwidget.py:210` | Las calidades disponibles se consultan con el **primer episodio** de la serie, no con el primero seleccionado |

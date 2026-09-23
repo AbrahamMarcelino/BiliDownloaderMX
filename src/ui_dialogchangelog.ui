@@ -17,13 +17,13 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>更新信息</string>
+   <string>Novedades</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>版本信息：</string>
+      <string>Información de la versión:</string>
      </property>
     </widget>
    </item>

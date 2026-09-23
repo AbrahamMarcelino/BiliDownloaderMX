@@ -4,8 +4,8 @@
     "method": "GET",
     "verify": false,
     "params": {
-      "oid": "视频 cid num"
+      "oid": "cid del video num"
     },
-    "return": "弹幕xml文件, 使用Deflate压缩, 需要zlib解压"
+    "return": "Archivo XML de danmaku comprimido con Deflate; se descomprime con zlib"
   }
 }

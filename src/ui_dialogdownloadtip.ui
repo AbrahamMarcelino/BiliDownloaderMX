@@ -17,7 +17,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>提示</string>
+   <string>Aviso</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

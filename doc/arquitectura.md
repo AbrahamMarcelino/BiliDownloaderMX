@@ -85,7 +85,7 @@ sequenceDiagram
     W-->>W: si es primera ejecución o versión nueva → muestra CHANGELOG
     W->>T1: start() (termina de inmediato: NO_UPDATE = True)
     W->>T2: start() → valida la sesión contra /x/web-interface/nav
-    T2-->>W: si la sesión es inválida → aviso «登录信息已失效»
+    T2-->>W: si la sesión es inválida → aviso «Tu sesión caducó»
 ```
 
 ### Directorio de trabajo
@@ -107,10 +107,10 @@ Toda la app usa **rutas relativas** al directorio de trabajo (`data/`, `Download
 
 | Pestaña | Clase | Archivo | Función |
 |---|---|---|---|
-| 输入 Entrada | `InputWidget` | `inputwidget.py` | Asistente de 4 pasos para preparar descargas |
-| 下载 Descargas | `DownloadWidget` | `downloadwidget.py` | Cola y progreso de las descargas |
-| 设置 Configuración | `SettingsWidget` | `settingswidget.py` | Preferencias, inicio y cierre de sesión |
-| 关于 Acerca de | `AboutWidget` | `aboutwidget.py` | Versión, changelog, licencia, «Acerca de Qt» |
+| Entrada | `InputWidget` | `inputwidget.py` | Asistente de 4 pasos para preparar descargas |
+| Descargas | `DownloadWidget` | `downloadwidget.py` | Cola y progreso de las descargas |
+| Configuración | `SettingsWidget` | `settingswidget.py` | Preferencias, inicio y cierre de sesión |
+| Acerca de | `AboutWidget` | `aboutwidget.py` | Versión, changelog, licencia, «Acerca de Qt» |
 
 Al cambiar de pestaña, `MainWindow.on_tab_changes` llama a `update_tab_changes(anterior, nueva)` en todas: la pestaña de configuración **guarda** al salir y **recarga** al entrar. Al cerrar la ventana también se guarda la configuración y se detienen las descargas.
 
@@ -146,9 +146,9 @@ flowchart LR
 | Clase | Archivo | Descripción |
 |---|---|---|
 | `CentralCheckBox` | `centralcheckbox.py` | Casilla centrada para usar dentro de tablas |
-| `ImageLabel` | `imagelabel.py` | `QLabel` que reescala la portada y ofrece menú «保存封面» (guardar portada) |
+| `ImageLabel` | `imagelabel.py` | `QLabel` que reescala la portada y ofrece el menú «Guardar portada» |
 | `ColoredLabel` | `coloredlabel.py` | Etiqueta con color arcoíris animado (temporizador de 33 ms) |
-| `SpecialColoredLabel` | `specialcoloredlabel.py` | Texto animado «离开设置界面以保存设置» (sal de la configuración para guardar). *Easter egg*: cada 16 clics muestra un mensaje gracioso; tras 15 mensajes desaparece |
+| `SpecialColoredLabel` | `specialcoloredlabel.py` | Texto animado «Sal de esta pestaña para guardar los cambios». *Easter egg*: cada 16 clics muestra un mensaje gracioso; tras 15 mensajes desaparece |
 | `DownloadItem` | `downloaditem.py` | Fila de la lista de descargas: título, parte, progreso, botones abrir, pausar/reanudar y reiniciar |
 
 ### Diálogos

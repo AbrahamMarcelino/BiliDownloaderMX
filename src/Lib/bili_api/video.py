@@ -27,7 +27,7 @@ def get_video_info(aid: int = None, bvid: str = None):
         params.pop('bvid')
         params['aid'] = aid
     else:
-        raise BiliVideoIdException('你必须输入 aid, bvid 中的任意一个')
+        raise BiliVideoIdException('Debes indicar aid o bvid')
 
     get = utils.network.get_data(
         scheme=url.scheme,
@@ -37,9 +37,9 @@ def get_video_info(aid: int = None, bvid: str = None):
         query=params
     )
     if get['code'] != 0:
-        raise NetWorkException('视频信息获取错误:\n{0};\n{1};\n{2};'.format(
+        raise NetWorkException('Error al obtener la información del video:\n{0};\n{1};\n{2};'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
     return get['data']
@@ -57,7 +57,7 @@ def get_video_pages(aid: int = None, bvid: str = None):
         params.pop('bvid')
         params['aid'] = aid
     else:
-        raise BiliVideoIdException('你必须输入 aid, bvid 中的任意一个')
+        raise BiliVideoIdException('Debes indicar aid o bvid')
 
     get = utils.network.get_data(
         scheme=url.scheme,
@@ -67,9 +67,9 @@ def get_video_pages(aid: int = None, bvid: str = None):
         query=params
     )
     if get['code'] != 0:
-        raise NetWorkException('视频信息获取错误:\n{0};\n{1};\n{2};'.format(
+        raise NetWorkException('Error al obtener la información del video:\n{0};\n{1};\n{2};'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
     return get['data']
@@ -84,7 +84,7 @@ def get_video_url(
         passport: utils.BiliPassport = None
 ):
     if cid is None:
-        raise BiliVideoIdException('你必须提供视频 cid')
+        raise BiliVideoIdException('Debes indicar el cid del video')
     api = copy.deepcopy(API['get_download_url_wbi'])
     url = urlsplit(api['url'])
     params: dict = api['params']
@@ -101,7 +101,7 @@ def get_video_url(
         params.pop('bvid')
         params['avid'] = avid
     else:
-        raise BiliVideoIdException('你必须输入 aid, bvid 中的任意一个')
+        raise BiliVideoIdException('Debes indicar aid o bvid')
     if cur_language is None:
         params.pop("cur_language")
     else:
@@ -120,9 +120,9 @@ def get_video_url(
     )
 
     if get['code'] != 0:
-        raise NetWorkException('视频链接获取错误:\n{0};\n{1};\n{2};'.format(
+        raise NetWorkException('Error al obtener el enlace del video:\n{0};\n{1};\n{2};'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
     return get['data']
@@ -141,7 +141,7 @@ def get_video_online_count(cid: int, aid: int = None, bvid: str = None):
         params.pop('bvid')
         params['aid'] = aid
     else:
-        raise BiliVideoIdException('你必须输入 aid, bvid 中的任意一个')
+        raise BiliVideoIdException('Debes indicar aid o bvid')
 
     get: dict = utils.network.get_data(
         scheme=url.scheme,
@@ -152,9 +152,9 @@ def get_video_online_count(cid: int, aid: int = None, bvid: str = None):
     )
 
     if get['code'] != 0:
-        raise NetWorkException('视频在线人数获取错误:\n{0};\n{1};\n{2};'.format(
+        raise NetWorkException('Error al obtener los espectadores en línea:\n{0};\n{1};\n{2};'.format(
             get['code'],
-            api['return']['code'].get(str(get['code']), '未知错误'),
+            api['return']['code'].get(str(get['code']), 'Error desconocido'),
             get['message']
         ))
 

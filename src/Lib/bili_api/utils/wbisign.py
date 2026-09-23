@@ -35,10 +35,10 @@ def _get_online_sign_data(passport: BiliPassport):
     if get["code"] != 0:
         if passport is not None:
             raise GetWbiException(
-                "获取Wbi信息错误:\n{0}\n{1}\n{2}".format(
+                "Error al obtener los datos WBI:\n{0}\n{1}\n{2}".format(
                     get["code"],
                     get["message"],
-                    _API["return"]["code"].get(str(get["code"]), "未知错误")
+                    _API["return"]["code"].get(str(get["code"]), "Error desconocido")
                 )
             )
 

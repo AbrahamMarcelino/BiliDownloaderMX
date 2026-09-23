@@ -2,6 +2,14 @@
 
 ### Copyright © 2021-2026 Majjcom
 
+- 1.4.0-es 2026/9/22 (adaptación al español latino, sin publicar)
+  - La interfaz ahora está en español latino: pestañas, botones, opciones, avisos, estados de descarga y mensajes de error
+  - La opción «hilos de descarga» ahora se llama «Descargas simultáneas», que es lo que controla en realidad
+  - Se tradujo la documentación (README, guía de compilación, historial de cambios y plantilla de reporte de bugs)
+  - Se añadió documentación nueva en la carpeta doc: guía de usuario, documentación técnica, revisión de código y plan de migración a bibliotecas actuales
+  - Adaptación basada en BiliDownloader 1.4.0 de Majjcom: https://github.com/Majjcom/BiliDownloader
+
+
 - 1.4.0 2026/9/19
   - Se actualizó el módulo de descarga de videos. Ahora es más fiable y además admite pausar, reintentar y otras funciones útiles
   - Actualización de componentes base

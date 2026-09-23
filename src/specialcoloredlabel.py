@@ -3,21 +3,21 @@ from PySide6 import QtWidgets, QtGui
 from coloredlabel import ColoredLabel
 
 reactions = (
-    "点我干嘛",
-    "你够了",
-    "难道是因为我好看你才点的吗",
-    "你怎么还在点",
-    "啊啊啊啊啊",
-    "别点了",
-    "没东西的",
-    "手都点痛了",
-    "不是，你怎么还在点",
-    "算了，不跟你玩了，走了",
-    "不是，我真的要走了",
-    "点了又不会给你打钱",
-    "好啦好啦",
-    "为何你如此执着",
-    "不闹了，这回是的走咯，Bye~~~",
+    "¿Por qué me das clic?",
+    "Ya estuvo",
+    "¿Será que me das clic porque me veo bien?",
+    "¿Todavía sigues dando clic?",
+    "¡Aaaaaah!",
+    "Ya no le des clic",
+    "Aquí no hay nada",
+    "Ya te ha de doler la mano",
+    "Oye, ¿en serio sigues dando clic?",
+    "Bueno, ya no juego contigo, me voy",
+    "No, ahora sí me voy",
+    "Por más clics que des, nadie te va a pagar",
+    "Ya, ya",
+    "¿Por qué tanta insistencia?",
+    "Ya no juego, ahora sí me voy. Bye~~~",
 )
 
 
@@ -32,7 +32,7 @@ class SpecialColoredLabel(ColoredLabel):
         if event.isBeginEvent():
             self.click_times += 1
         if self.click_times % 16 == 0 and self.re_index < len(reactions):
-            QtWidgets.QMessageBox.information(self.parent(), "干嘛", reactions[self.re_index])
+            QtWidgets.QMessageBox.information(self.parent(), "¿Qué pasa?", reactions[self.re_index])
             self.re_index += 1
             self.click_times = 0
         if self.re_index >= len(reactions):

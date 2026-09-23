@@ -88,7 +88,7 @@ El autor comenta con humor que el código «tiene un montón de bugs que solo se
 
 ## Glosario de la interfaz
 
-*Nota de esta adaptación:* la interfaz del programa sigue en chino. Esta tabla traduce los textos que aparecen en las capturas.
+*Nota de esta adaptación:* en este repositorio la interfaz ya está traducida al español. Esta tabla sirve para las **versiones oficiales del autor**, que siguen en chino, y traduce los textos que aparecen en las capturas.
 
 ### Pestañas
 

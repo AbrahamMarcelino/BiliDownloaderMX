@@ -27,7 +27,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>选集：</string>
+      <string>Episodios:</string>
      </property>
     </widget>
    </item>
@@ -39,14 +39,14 @@
         <string/>
        </property>
        <property name="placeholderText">
-        <string>输入选集配置（留空反选）</string>
+        <string>Episodios a descargar (vacío = invertir selección)</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="button_setSelection">
        <property name="text">
-        <string>设置选集</string>
+        <string>Aplicar selección</string>
        </property>
       </widget>
      </item>
@@ -81,12 +81,12 @@
      </attribute>
      <column>
       <property name="text">
-       <string>选择</string>
+       <string>Elegir</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>名称</string>
+       <string>Nombre</string>
       </property>
      </column>
     </widget>
@@ -96,14 +96,14 @@
      <item>
       <widget class="QPushButton" name="button_back">
        <property name="text">
-        <string>返回</string>
+        <string>Volver</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="button_next">
        <property name="text">
-        <string>继续</string>
+        <string>Continuar</string>
        </property>
       </widget>
      </item>

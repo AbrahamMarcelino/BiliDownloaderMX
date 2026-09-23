@@ -35,14 +35,14 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>输入想要下载的视频号或链接：</string>
+      <string>Escribe el número o el enlace del video que quieres descargar:</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>需要包含AV、BV、MD、和EP号</string>
+      <string>Debe contener un número AV, BV, MD o EP</string>
      </property>
     </widget>
    </item>
@@ -82,7 +82,7 @@
       <bool>false</bool>
      </property>
      <property name="text">
-      <string>继续</string>
+      <string>Continuar</string>
      </property>
     </widget>
    </item>

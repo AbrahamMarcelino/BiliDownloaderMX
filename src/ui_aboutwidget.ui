@@ -65,7 +65,7 @@
    <item>
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>反馈 &amp; 开源：</string>
+      <string>Comentarios y código fuente:</string>
      </property>
     </widget>
    </item>
@@ -138,7 +138,7 @@
      <item>
       <widget class="QPushButton" name="button_changelog">
        <property name="text">
-        <string>查看CHANGELOG</string>
+        <string>Ver CHANGELOG</string>
        </property>
       </widget>
      </item>
@@ -152,7 +152,7 @@
      <item>
       <widget class="QPushButton" name="button_about_qt">
        <property name="text">
-        <string>关于Qt</string>
+        <string>Acerca de Qt</string>
        </property>
       </widget>
      </item>

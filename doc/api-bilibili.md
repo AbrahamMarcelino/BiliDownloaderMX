@@ -145,8 +145,8 @@ sequenceDiagram
 ## 8. Danmaku (`danmaku.py` y `Lib/xml2ass`)
 
 1. `get_danmaku_xml(cid)` descarga `list.so?oid=<cid>` y lo descomprime con `zlib` (*deflate* sin cabecera).
-2. `xml2ass.convertMain(xml, 852, 480, text_opacity=0.6)` lo convierte en subtítulos **ASS** (comentarios en movimiento, fijos arriba y fijos abajo), con fuente 黑体 de 20 pt.
-3. Se guarda como `NNN-<parte>.ass` junto al video. Si falla, la descarga continúa y se muestra «弹幕下载失败，已跳过» (danmaku omitido).
+2. `xml2ass.convertMain(xml, 852, 480, text_opacity=0.6)` lo convierte en subtítulos **ASS** (comentarios en movimiento, fijos arriba y fijos abajo), con la fuente 黑体 (SimHei) de 20 pt.
+3. Se guarda como `NNN-<parte>.ass` junto al video. Si falla, la descarga continúa y se muestra «No se pudo descargar el danmaku; se omitió».
 
 ---
 

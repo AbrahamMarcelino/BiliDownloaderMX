@@ -58,7 +58,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>特殊音频</string>
+           <string>Audio especial</string>
           </property>
          </widget>
         </item>
@@ -72,14 +72,14 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>优选编码</string>
+           <string>Códec preferido</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>保存位置</string>
+           <string>Carpeta</string>
           </property>
          </widget>
         </item>
@@ -95,7 +95,7 @@
           <item>
            <widget class="QPushButton" name="button_path">
             <property name="text">
-             <string>设置当前保存位置</string>
+             <string>Cambiar carpeta</string>
             </property>
            </widget>
           </item>
@@ -124,7 +124,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>最大清晰度</string>
+           <string>Calidad máxima</string>
           </property>
          </widget>
         </item>
@@ -134,7 +134,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>AI原声翻译</string>
+           <string>Traducción de voz (IA)</string>
           </property>
          </widget>
         </item>
@@ -173,17 +173,17 @@
         </attribute>
         <column>
          <property name="text">
-          <string>下载弹幕</string>
+          <string>Danmaku</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>仅下载音频</string>
+          <string>Solo audio</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>下载项</string>
+          <string>Elemento</string>
          </property>
         </column>
        </widget>
@@ -196,7 +196,7 @@
      <item>
       <widget class="QPushButton" name="button_back">
        <property name="text">
-        <string>返回</string>
+        <string>Volver</string>
        </property>
       </widget>
      </item>
@@ -206,7 +206,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>提交</string>
+        <string>Enviar</string>
        </property>
       </widget>
      </item>

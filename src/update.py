@@ -137,7 +137,7 @@ class UpdateDownloader(QtCore.QThread):
             md5 = builder.hexdigest()
 
             if md5.lower() != self.file_hash.lower():
-                raise Exception("下载哈希无法对应，下载错误")
+                raise Exception("El hash del archivo descargado no coincide; la descarga falló")
             self.download_install.emit(self.save_path)
         except Exception as e:
             self.download_err.emit(

@@ -64,7 +64,7 @@
       </widget>
       <widget class="QWidget" name="tab_settings">
        <attribute name="title">
-        <string>页</string>
+        <string>Página</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <property name="leftMargin">
@@ -86,7 +86,7 @@
       </widget>
       <widget class="QWidget" name="tab_about">
        <attribute name="title">
-        <string>页</string>
+        <string>Página</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">

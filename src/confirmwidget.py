@@ -50,13 +50,13 @@ class ConfirmWidget(QtWidgets.QWidget):
     def save_cover(self):
         default_save_path = configUtils.getUserData(configUtils.Configs.DOWNLOAD_PATH,
                                                     QtCore.QDir("Download").absolutePath())
-        save_path = QtWidgets.QFileDialog.getSaveFileName(self, "设置保存位置", default_save_path, "PNG图片(*.png)")
+        save_path = QtWidgets.QFileDialog.getSaveFileName(self, "Elegir dónde guardar", default_save_path, "Imagen PNG (*.png)")
         if len(save_path[0]) == 0:
             return
         self.img.save(
             save_path[0] + (".png" if not save_path[0].endswith(".png") else '')
         )
-        QtWidgets.QMessageBox.information(self, "信息", "保存成功")
+        QtWidgets.QMessageBox.information(self, "Información", "Portada guardada")
 
     def data_update(self, _back):
         self.img = QtGui.QImage(":/res/Placeholde.png")
@@ -92,7 +92,7 @@ class LoadInfoBase(QtCore.QThread):
             show = str(ex)
             self.update_info.emit(show, True)
         except Exception as ex:
-            show = "未知错误\n" + str(ex) + "\n\n"
+            show = "Error desconocido\n" + str(ex) + "\n\n"
             show += traceback.format_exc()
             self.update_info.emit(show, True)
 
@@ -109,11 +109,11 @@ class LaodInfoAV(LoadInfoBase):
         online = video.get_video_online_count(cid=data["cid"], aid=self.content[2:])
         pic_url = data["pic"]
         show: str = data["title"]
-        show += "\n\nBV号: " + data["bvid"]
-        show += "\nAV号: AV" + str(data["aid"])
-        show += "\nUP主: " + data["owner"]["name"]
-        show += "\n在线人数: " + online["total"]
-        show += "\n\n简介:\n" + data["desc"]
+        show += "\n\nNúmero BV: " + data["bvid"]
+        show += "\nNúmero AV: AV" + str(data["aid"])
+        show += "\nAutor (UP): " + data["owner"]["name"]
+        show += "\nEspectadores en línea: " + online["total"]
+        show += "\n\nDescripción:\n" + data["desc"]
         self.update_info.emit(show, False)
         page_data = []
         for i in data["pages"]:
@@ -151,11 +151,11 @@ class LoadInfoBV(LoadInfoBase):
         online = video.get_video_online_count(cid=data["cid"], bvid=self.content)
         pic_url = data["pic"]
         show: str = data["title"]
-        show += "\n\nBV号: " + data["bvid"]
-        show += "\nAV号: AV" + str(data["aid"])
-        show += "\nUP主: " + data["owner"]["name"]
-        show += "\n在线人数: " + online["total"]
-        show += "\n\n简介:\n" + data["desc"]
+        show += "\n\nNúmero BV: " + data["bvid"]
+        show += "\nNúmero AV: AV" + str(data["aid"])
+        show += "\nAutor (UP): " + data["owner"]["name"]
+        show += "\nEspectadores en línea: " + online["total"]
+        show += "\n\nDescripción:\n" + data["desc"]
         self.update_info.emit(show, False)
         page_data = []
         for i in data["pages"]:
@@ -193,13 +193,13 @@ class LoadInfoMD(LoadInfoBase):
         ssid = data["media"]["season_id"]
         ss_data = bangumi.get_bangumi_detailed_info(season_id=ssid)
         show = data["media"]["title"]
-        show += "\n\nMD号: MD" + str(data["media"]["media_id"])
+        show += "\n\nNúmero MD: MD" + str(data["media"]["media_id"])
         if "rating" in data["media"]:
-            show += "\n评分: " + str(data["media"]["rating"]["score"])
+            show += "\nCalificación: " + str(data["media"]["rating"]["score"])
         else:
-            show += "\n评分: 暂无评分"
-        show += "\n\n简介:\n" + ss_data["data"]["evaluate"]
-        show += "\n\n制作:\n" + ss_data["data"]["staff"]
+            show += "\nCalificación: sin calificación"
+        show += "\n\nDescripción:\n" + ss_data["data"]["evaluate"]
+        show += "\n\nProducción:\n" + ss_data["data"]["staff"]
         cover_url = data["media"]["cover"]
         self.update_info.emit(show, False)
         page_data = []
@@ -238,13 +238,13 @@ class LoadInfoEP(LoadInfoBase):
     def load_data(self):
         data = bangumi.get_bangumi_detailed_info(ep_id=self.content[2:])
         show = data["info"]["media"]["title"]
-        show += "\n\nMD号: MD" + str(data["info"]["media"]["media_id"])
+        show += "\n\nNúmero MD: MD" + str(data["info"]["media"]["media_id"])
         if "rating" in data["info"]["media"]:
-            show += "\n评分: " + str(data["info"]["media"]["rating"]["score"])
+            show += "\nCalificación: " + str(data["info"]["media"]["rating"]["score"])
         else:
-            show += "\n评分: 暂无评分"
-        show += "\n\n简介:\n" + data["data"]["evaluate"]
-        show += "\n\n制作:\n" + data["data"]["staff"]
+            show += "\nCalificación: sin calificación"
+        show += "\n\nDescripción:\n" + data["data"]["evaluate"]
+        show += "\n\nProducción:\n" + data["data"]["staff"]
         cover_url = data["info"]["media"]["cover"]
         self.update_info.emit(show, False)
         page_data = []

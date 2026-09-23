@@ -65,7 +65,7 @@ class SettingsWidget(QtWidgets.QWidget):
         self.ui.check_audio.setChecked(only_audio)
         self.ui.check_danmaku.setChecked(danmaku)
         self.ui.check_hiper.setChecked(ultra_resolution)
-        self.ui.line_login.setText("未登录" if passport is None else "已登录")
+        self.ui.line_login.setText("Sin sesión" if passport is None else "Sesión iniciada")
         self.ui.combo_style.setCurrentText(qt_style)
         self.ui.check_highdpi.setChecked(high_dpi)
         self.ui.check_close_text_len_limit.setChecked(disable_title_limit)
@@ -108,7 +108,7 @@ class SettingsWidget(QtWidgets.QWidget):
     @QtCore.Slot()
     def on_path_button_clicked(self):
         path = QtWidgets.QFileDialog.getExistingDirectory(
-            self, "选择下载目录", self.ui.line_path.text()
+            self, "Seleccionar carpeta de descargas", self.ui.line_path.text()
         )
         if len(path) == 0:
             return
@@ -123,7 +123,7 @@ class SettingsWidget(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def on_reset_button_clicked(self):
-        dialog = QMessageBox.question(self, "提示", "确定要重置所有设置吗？",
+        dialog = QMessageBox.question(self, "Aviso", "¿Seguro que quieres restablecer toda la configuración?",
                                       buttons=QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                                       defaultButton=QMessageBox.StandardButton.No)
         if dialog == QMessageBox.StandardButton.Yes:
@@ -131,7 +131,7 @@ class SettingsWidget(QtWidgets.QWidget):
             del self.userdata
             self.userdata = configUtils.UserDataHelper()
             self.load_settings()
-            QMessageBox.information(self, "信息", "设置已重置")
+            QMessageBox.information(self, "Información", "Configuración restablecida")
 
     @QtCore.Slot()
     def on_login_button_clicked(self):
@@ -153,29 +153,29 @@ class SettingsWidget(QtWidgets.QWidget):
     @QtCore.Slot()
     def on_logout_button_clicked(self):
         ret = QMessageBox.question(
-            self, "确认", "确认退出登录？",
+            self, "Confirmar", "¿Cerrar la sesión?",
             buttons=QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             defaultButton=QMessageBox.StandardButton.No)
         if ret == QtWidgets.QMessageBox.StandardButton.No:
             return
         passport = self.userdata.get(self.userdata.CFGS.PASSPORT, None)
         if passport is None:
-            QMessageBox.information(self, "信息", "未登录")
+            QMessageBox.information(self, "Información", "No has iniciado sesión")
             return
 
         try:
             if "data" not in passport:
                 key = self.userdata.get(self.userdata.CFGS.PASSPORT_CRYPT_KEY, None)
                 if key is None:
-                    raise Exception("无法获取密钥")
+                    raise Exception("No se pudo obtener la clave")
                 decode = utils.passport.decode_cookie(passport["secure_data"], key)
                 if decode is None:
-                    raise Exception("处理信息失败")
+                    raise Exception("No se pudieron procesar los datos de la sesión")
                 passport["data"] = decode
             user.exit_login(utils.passport.BiliPassport(passport["data"]))
-            QMessageBox.information(self, "成功", "已退出登录")
+            QMessageBox.information(self, "Listo", "Sesión cerrada")
         except Exception as e:
-            QMessageBox.critical(self, "退出登录失败", "登录信息已清除\n" + str(e))
+            QMessageBox.critical(self, "Error al cerrar sesión", "Se borraron los datos de la sesión\n" + str(e))
         self.userdata.set(self.userdata.CFGS.PASSPORT, None)
         self.userdata.set(self.userdata.CFGS.PASSPORT_CRYPT_KEY, None)
         self.userdata.save()

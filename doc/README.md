@@ -2,7 +2,7 @@
 
 ## Para usuarios
 
-- [Guía de usuario](guia-de-usuario.md): versiones, instalación, uso paso a paso y glosario de la interfaz (que está en chino).
+- [Guía de usuario](guia-de-usuario.md): versiones, instalación, uso paso a paso y glosario de la interfaz en chino de las versiones oficiales.
 
 ## Para desarrolladores
 

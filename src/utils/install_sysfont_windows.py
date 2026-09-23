@@ -21,7 +21,7 @@ def check_font(name: str):
                 except OSError:
                     break
     except Exception as e:
-        print(f"加载字体出错: {e}")
+        print(f"Error al leer las fuentes instaladas: {e}")
     return False
 
 
@@ -41,17 +41,17 @@ def install_font(font_name: str, path: str):
                              _winreg.KEY_SET_VALUE | _winreg.KEY_WOW64_64KEY) as key:
             _winreg.SetValueEx(key, value_name, 0, _winreg.REG_SZ, font_path)
     except Exception as e:
-        print(f"注册字体出错 {e}")
+        print(f"Error al registrar la fuente: {e}")
         return False
 
-    # 通知系统
+    # Notificar al sistema
     try:
         HWND_BROADCAST = 0xFFFF
         WM_FONTCHANGE = 0x001D
         ctypes.windll.user32.SendMessageW(HWND_BROADCAST, WM_FONTCHANGE, 0, 0)
-        # print("已通知系统字体更改")
+        # print("Se notificó al sistema el cambio de fuentes")
     except Exception as e:
-        print(f"通知系统字体更改时出错: {e}")
+        print(f"Error al notificar al sistema el cambio de fuentes: {e}")
         return False
 
     return True
@@ -61,9 +61,9 @@ def test():
     print(ctypes.windll.shell32.IsUserAnAdmin())
     print(check_font("HarmonyOS Sans SC"))
     if install_font("HarmonyOS Sans SC Test", "font\\HarmonyOS_Sans_SC_Regulara.ttf"):
-        print("注册字体成功")
+        print("Fuente registrada correctamente")
     else:
-        print("注册字体失败")
+        print("No se pudo registrar la fuente")
 
 
 if __name__ == "__main__":

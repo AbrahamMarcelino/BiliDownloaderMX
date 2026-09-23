@@ -80,10 +80,10 @@ def exit_login(passport: utils.BiliPassport):
     )
 
     if get["code"] != 0:
-        raise utils.network.NetWorkException("退出登录失败:\n{0};\n{1};\n{2};".format(
+        raise utils.network.NetWorkException("No se pudo cerrar la sesión:\n{0};\n{1};\n{2};".format(
             get["code"],
-            api["return"]["code"].get(str(get["code"]), "未知错误"),
-            get.get("message", "未知错误")
+            api["return"]["code"].get(str(get["code"]), "Error desconocido"),
+            get.get("message", "Error desconocido")
         ))
 
     return True

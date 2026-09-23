@@ -6,13 +6,13 @@
     "params": null,
     "return": {
       "code": {
-        "0": "成功"
+        "0": "Éxito"
       },
       "ttl": 1,
-      "message": "请求信息",
+      "message": "Información de la solicitud",
       "data": {
-        "url": "二维码内容url string",
-        "qrcode_key": "扫码登录密钥 string"
+        "url": "URL del contenido del código QR string",
+        "qrcode_key": "Clave de inicio de sesión por QR string"
       }
     }
   },
@@ -21,21 +21,21 @@
     "method": "GET",
     "verify": false,
     "params": {
-      "qrcode_key": "扫码登陆密钥 string"
+      "qrcode_key": "Clave de inicio de sesión por QR string"
     },
     "return": {
-      "code": "返回值 num",
-      "message": "错误信息",
+      "code": "Valor devuelto num",
+      "message": "Mensaje de error",
       "data": {
-        "timestamp": "登录时间",
-        "message": "状态信息",
-        "refresh_token": "刷新令牌",
-        "url": "游戏分站跨域登录 url",
+        "timestamp": "Hora de inicio de sesión",
+        "message": "Mensaje de estado",
+        "refresh_token": "Token de actualización",
+        "url": "URL de inicio de sesión entre dominios (sitio de juegos)",
         "code": {
-          "0": "成功",
-          "86038": "密钥超时",
-          "86101": "未扫描",
-          "86090": "未确认"
+          "0": "Éxito",
+          "86038": "Clave caducada",
+          "86101": "Sin escanear",
+          "86090": "Sin confirmar"
         }
       }
     }
@@ -47,13 +47,13 @@
     "params": null,
     "return": {
       "code": {
-        "0": "成功"
+        "0": "Éxito"
       },
       "status": true,
-      "ts": "请求时间 num",
+      "ts": "Hora de la solicitud num",
       "data": {
-        "url": "二维码内容url string",
-        "oauthKey": "扫码登录秘钥 string"
+        "url": "URL del contenido del código QR string",
+        "oauthKey": "Clave de inicio de sesión por QR string"
       }
     }
   },
@@ -62,20 +62,20 @@
     "method": "POST",
     "verify": false,
     "params": {
-      "oauthKey": "扫码登陆密钥 string",
-      "gourl": "跳转url string (非必要)"
+      "oauthKey": "Clave de inicio de sesión por QR string",
+      "gourl": "URL de redirección string (opcional)"
     },
     "return": {
-      "code": "返回值 num",
-      "message": "错误信息",
-      "ts": "扫码时间",
-      "status": "扫码登录是否成功 bool",
+      "code": "Valor devuelto num",
+      "message": "Mensaje de error",
+      "ts": "Hora del escaneo",
+      "status": "Si el inicio de sesión por QR tuvo éxito bool",
       "data": {
-        "obj": "成功",
-        "-1": "密钥错误",
-        "-2": "密钥超时",
-        "-4": "未扫描",
-        "-5": "未确认"
+        "obj": "Éxito",
+        "-1": "Clave incorrecta",
+        "-2": "Clave caducada",
+        "-4": "Sin escanear",
+        "-5": "Sin confirmar"
       }
     }
   },
@@ -86,10 +86,10 @@
     "params": null,
     "return": {
       "code": {
-        "0": "成功",
-        "-101": "账号未登录"
+        "0": "Éxito",
+        "-101": "La cuenta no ha iniciado sesión"
       },
-      "message": "错误信息",
+      "message": "Mensaje de error",
       "ttl": 1,
       "data": {
         "wbi_img": {
@@ -106,20 +106,20 @@
     "verify": true,
     "params": {
       "biliCSRF": "CSRF Token (bili_jct)",
-      "gourl": "成功后跳转到的页面 (非必要)"
+      "gourl": "Página a la que se redirige tras el éxito (opcional)"
     },
     "return": {
       "code": {
-        "0": "成功",
-        "2202": "csrf 请求非法"
+        "0": "Éxito",
+        "2202": "Solicitud CSRF no válida"
       },
-      "status": "是否成功 (bool)",
-      "ts": "时间戳",
-      "message": "错误信息 (成功时不存在)",
+      "status": "Si tuvo éxito (bool)",
+      "ts": "Marca de tiempo",
+      "message": "Mensaje de error (no existe si hay éxito)",
       "data": [
-        "返回信息 (失败时不存在)",
+        "Información devuelta (no existe si hay error)",
         {
-          "redirectUrl": "重定向链接"
+          "redirectUrl": "Enlace de redirección"
         }
       ]
     }

@@ -97,7 +97,7 @@ class InputWidget(QWidget):
         show = configUtils.getUserData(configUtils.Configs.SHOW_DOWNLOAD_TIP, True)
         if not show:
             return
-        dialog = DialogDownloadTip("提示", "内容已加入下载队列，您可以回到输入界面继续下载其他内容", "不再提醒", self)
+        dialog = DialogDownloadTip("Aviso", "Se agregó a la cola de descargas. Puedes volver a la pestaña Entrada para descargar algo más.", "No volver a mostrar", self)
         dialog.exec()
         res = dialog.getResult()
         if res is True:

@@ -50,7 +50,7 @@ class ConfigWidget(QtWidgets.QWidget):
     def on_path_change_button_clicked(self):
         path = QFileDialog.getExistingDirectory(
             self,
-            "选择文件夹",
+            "Seleccionar carpeta",
             self.ui.line_path.text(),
             QFileDialog.Option.ShowDirsOnly,
         )
@@ -120,7 +120,7 @@ class ConfigWidget(QtWidgets.QWidget):
     def update_info(self, data: QtCore.QByteArray, err: bool):
         data = pickle.loads(data.data())
         if err:
-            QMessageBox.critical(self, "错误", data)
+            QMessageBox.critical(self, "Error", data)
             self.ui.widget.setEnabled(False)
             self.ui.button_submit.setEnabled(False)
             return
@@ -139,7 +139,7 @@ class ConfigWidget(QtWidgets.QWidget):
                 self.ui.combo_audio.addItem(i)
             self.ui.combo_audio.setEnabled(True)
         else:
-            self.ui.combo_audio.setToolTip("当前视频无特殊音频")
+            self.ui.combo_audio.setToolTip("Este video no tiene audio especial")
         if len(data["ai_language"]) > 0:
             self.ui.label_ai_language.setEnabled(True)
             self.ui.combo_ai_language.addItem("")
@@ -148,7 +148,7 @@ class ConfigWidget(QtWidgets.QWidget):
                 self.ai_language_title_map[i["title"]] = i["lang"]
             self.ui.combo_ai_language.setEnabled(True)
         else:
-            self.ui.combo_ai_language.setToolTip("当前视频无AI原声翻译")
+            self.ui.combo_ai_language.setToolTip("Este video no tiene traducción de voz con IA")
 
     @QtCore.Slot()
     def load_finish(self):
